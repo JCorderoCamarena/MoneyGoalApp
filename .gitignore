@@ -31,3 +31,14 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/captures
+.externalNativeBuild
+.cxx
+iosApp/iosApp.xcworkspace/*
+iosApp/iosApp.xcodeproj/*
+!iosApp/iosApp.xcodeproj/project.pbxproj
