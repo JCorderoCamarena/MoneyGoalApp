@@ -12,30 +12,54 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import data.database.Database
+import data.database.DatabaseDriverFactory
+import dev.icerock.moko.mvvm.compose.getViewModel
+import dev.icerock.moko.mvvm.compose.viewModelFactory
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
+import org.koin.dsl.KoinAppDeclaration
+import org.koin.dsl.koinApplication
+import ui.home.HomeScreen
+import ui.home.HomeViewModel
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun App() {
     MaterialTheme {
-        var greetingText by remember { mutableStateOf("Hello, World!") }
-        var showImage by remember { mutableStateOf(false) }
-        Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Button(onClick = {
-                greetingText = "Hello, ${getPlatformName()}"
-                showImage = !showImage
-            }) {
-                Text(greetingText)
+        koinApplication(
+            appDeclaration = null
+        )
+        val homeViewModel = getViewModel(
+            key = Unit,
+            factory = viewModelFactory {
+                HomeViewModel(Database(DatabaseDriverFactory()))
             }
-            AnimatedVisibility(showImage) {
-                Image(
-                    painterResource("compose-multiplatform.xml"),
-                    null
-                )
-            }
+        )
+        HomeScreen(homeViewModel)
+//        SampleCode()
+    }
+}
+
+@OptIn(ExperimentalResourceApi::class)
+@Composable
+fun SampleCode() {
+    var greetingText by remember { mutableStateOf("Hello, World!") }
+    var showImage by remember { mutableStateOf(false) }
+    Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+        Button(onClick = {
+            greetingText = "Hello, ${getPlatformName()}"
+            showImage = !showImage
+        }) {
+            Text(greetingText)
+        }
+        AnimatedVisibility(showImage) {
+            Image(
+                painterResource("compose-multiplatform.xml"),
+                null
+            )
         }
     }
+
 }
 
 expect fun getPlatformName(): String

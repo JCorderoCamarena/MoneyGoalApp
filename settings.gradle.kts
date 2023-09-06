@@ -6,8 +6,8 @@ include(":shared")
 pluginManagement {
     repositories {
         gradlePluginPortal()
-        mavenCentral()
         google()
+        mavenCentral()
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
 
@@ -19,6 +19,7 @@ pluginManagement {
         kotlin("jvm").version(kotlinVersion)
         kotlin("multiplatform").version(kotlinVersion)
         kotlin("android").version(kotlinVersion)
+        id("app.cash.sqldelight") version "2.0.0"
 
         id("com.android.application").version(agpVersion)
         id("com.android.library").version(agpVersion)
@@ -29,8 +30,8 @@ pluginManagement {
 
 dependencyResolutionManagement {
     repositories {
-        mavenCentral()
         google()
+        mavenCentral()
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
 }

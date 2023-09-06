@@ -1,0 +1,18 @@
+CREATE TABLE Expense (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    concept TEXT NOT NULL,
+    amount REAL AS Float NOT NULL,
+    timestamp INTEGER NOT NULL
+);
+
+insertExpense:
+INSERT INTO Expense(id, concept, amount, timestamp) VALUES (?, ?, ?, ?);
+
+removeExpense:
+DELETE FROM Expense WHERE id=?;
+
+selectAllExpenses:
+SELECT Expense.* FROM Expense;
+
+removeAllExpenses:
+DELETE FROM Expense;
