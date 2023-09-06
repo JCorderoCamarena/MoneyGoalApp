@@ -42,28 +42,25 @@ kotlin {
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
 
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
-                implementation("com.squareup.sqldelight:runtime:1.5.5")
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.1")
+                implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.runtime)
+                implementation(libs.coroutines.extensions)
+                implementation(libs.kotlinx.datetime)
 
-                api("dev.icerock.moko:mvvm-core:0.16.1") // only ViewModel, EventsDispatcher, Dispatchers.UI
-//                api("dev.icerock.moko:mvvm-flow:0.16.1") // api mvvm-core, CFlow for native and binding extensions
+                implementation(libs.voyager.navigator)
+                implementation(libs.voyager.koin)
 
-                api("dev.icerock.moko:mvvm-compose:0.16.1") // api mvvm-core, getViewModel for Compose Multiplatfrom
-//                api("dev.icerock.moko:mvvm-flow-compose:0.16.1") // api mvvm-flow, binding extensions for Compose Multiplatfrom
 
-                with(Deps.Koin) {
-                    api(core)
-                    api(test)
-                }
+                api(libs.koin.core)
+                api(libs.koin.test)
             }
         }
         val androidMain by getting {
             dependencies {
-                api("androidx.activity:activity-compose:1.7.2")
-                api("androidx.appcompat:appcompat:1.6.1")
-                api("androidx.core:core-ktx:1.10.1")
-                implementation("com.squareup.sqldelight:android-driver:1.5.5")
+                api(libs.activity.compose)
+                api(libs.appcompat)
+                api(libs.core.ktx)
+                implementation(libs.android.driver)
             }
         }
         val iosX64Main by getting
@@ -76,7 +73,7 @@ kotlin {
             iosSimulatorArm64Main.dependsOn(this)
 
             dependencies {
-                implementation("com.squareup.sqldelight:native-driver:1.5.5")
+                implementation(libs.native.driver)
             }
         }
     }
