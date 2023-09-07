@@ -27,7 +27,7 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
     }
 
 val viewModelModule = module {
-    factory { HomeViewModel(get(), get()) }
+    factory { HomeViewModel(get()) }
 }
 
 val useCaseModule = module {
