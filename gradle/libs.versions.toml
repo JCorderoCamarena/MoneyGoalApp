@@ -26,5 +26,7 @@ native-driver = { module = "com.squareup.sqldelight:native-driver", version.ref 
 runtime = { module = "com.squareup.sqldelight:runtime", version.ref = "coroutines-extensions" }
 voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 voyager-koin = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voyager" }
+voyager-tabNavigator = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager" }
+voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
 
 [plugins]

@@ -7,7 +7,8 @@ import com.jorgecamarena.moneygoalapp.data.domain.interactors.DeleteOneExpenseUs
 import com.jorgecamarena.moneygoalapp.data.domain.interactors.GetAllExpensesUseCase
 import com.jorgecamarena.moneygoalapp.data.domain.interactors.SaveExpenseUseCase
 import com.jorgecamarena.moneygoalapp.data.repository.ExpenseRepositoryImp
-import com.jorgecamarena.moneygoalapp.presentation.ui.addExpense.HomeViewModel
+import com.jorgecamarena.moneygoalapp.presentation.ui.feature.addExpense.HomeViewModel
+import com.jorgecamarena.moneygoalapp.presentation.ui.feature.expenseList.ExpenseListViewModel
 import kotlinx.coroutines.Dispatchers
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
@@ -28,6 +29,7 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
 
 val viewModelModule = module {
     factory { HomeViewModel(get()) }
+    factory { ExpenseListViewModel(get(), get()) }
 }
 
 val useCaseModule = module {

@@ -1,4 +1,4 @@
-package com.jorgecamarena.moneygoalapp.presentation.ui.addExpense
+package com.jorgecamarena.moneygoalapp.presentation.ui.feature.addExpense
 
 import com.jorgecamarena.moneygoalapp.entity.Expense
 import com.jorgecamarena.moneygoalapp.presentation.model.ResourceUiState
@@ -9,13 +9,14 @@ import com.jorgecamarena.moneygoalapp.presentation.mvi.UiState
 interface HomeViewContract {
 
     sealed interface Event: UiEvent {
-        data class OnSaveExpense(val concept: String, val amount: Float): Event
-//        data class OnDeleteExpense(val expenseId: Long): Event
-
+        data object OnSaveExpense : Event
+        data class OnUpdateConcept(val concept: String): Event
+        data class OnUpdateAmount(val amount: Float): Event
     }
 
     data class State(
-        val expenses: ResourceUiState<List<Expense>>
+        val concept: String,
+        val amount: Float
     ): UiState
 
     sealed interface Effect : UiEffect {
