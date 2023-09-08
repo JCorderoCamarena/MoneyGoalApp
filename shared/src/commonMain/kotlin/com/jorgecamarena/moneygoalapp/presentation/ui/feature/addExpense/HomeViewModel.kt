@@ -3,7 +3,6 @@ package com.jorgecamarena.moneygoalapp.presentation.ui.feature.addExpense
 import cafe.adriel.voyager.core.model.coroutineScope
 import com.jorgecamarena.moneygoalapp.data.domain.interactors.SaveExpenseUseCase
 import com.jorgecamarena.moneygoalapp.entity.Expense
-import com.jorgecamarena.moneygoalapp.presentation.model.ResourceUiState
 import com.jorgecamarena.moneygoalapp.presentation.mvi.BaseViewModel
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
